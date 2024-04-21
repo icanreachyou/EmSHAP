@@ -71,8 +71,8 @@ def _estimate_v_hat(x, b, y, _estimate_model, _predict_model):
     for i in tqdm(range(0, x.shape[0], batch_size)):
     # for i in tqdm(range(2)):
         temp = tf.cast(x[i:i+batch_size, :], tf.float32)
-        # aa = _estimate_model.sample(temp, b)
-        aa, _ = _estimate_model.impute(temp, b)
+        aa = _estimate_model.sample(temp, b)
+        # aa, _ = _estimate_model.impute(temp, b)
         x_mask_outputs[i:i+batch_size, :] = aa
     # x_mask_outputs, _ = get_data._get_3D_data(x_mask_outputs, y, batch_size)
     # x, _ = get_data._get_3D_data(x, y, batch_size)
